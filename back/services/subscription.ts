@@ -75,28 +75,31 @@ export default class SubscriptionService {
   }
 
   public async handleTask(
-    doc: Subscription,
+    _doc: Subscription,
     needCreate = true,
     runImmediately = false,
   ) {
-    const { url } = formatUrl(doc);
+    const { url } = formatUrl(_doc);
 
-    doc.command = formatCommand(doc, url as string);
+    const doc = {
+      ..._doc,
+      command: formatCommand(_doc, url as string),
+    } as Omit<Subscription, 'command'> & { command: string };
 
     if (doc.schedule_type === 'crontab') {
-      this.scheduleService.cancelCronTask(doc as any);
+      this.scheduleService.cancelCronTask(doc);
       needCreate &&
         (await this.scheduleService.createCronTask(
-          doc as any,
+          doc,
           this.taskCallbacks(doc),
           runImmediately,
         ));
     } else {
-      this.scheduleService.cancelIntervalTask(doc as any);
-      const { type, value } = doc.interval_schedule as any;
+      this.scheduleService.cancelIntervalTask(doc);
+      const { type, value } = doc.interval_schedule!;
       needCreate &&
         (await this.scheduleService.createIntervalTask(
-          doc as any,
+          doc,
           { [type]: value } as SimpleIntervalSchedule,
           runImmediately,
           this.taskCallbacks(doc),
@@ -256,7 +259,7 @@ export default class SubscriptionService {
     );
   }
 
-  public async remove(ids: number[], query: any) {
+  public async remove(ids: number[], query: { force?: boolean }) {
     const docs = await SubscriptionModel.findAll({ where: { id: ids } });
     for (const doc of docs) {
       await this.handleTask(doc, false);
@@ -279,8 +282,11 @@ export default class SubscriptionService {
   public async getDb(
     query: FindOptions<Subscription>['where'],
   ): Promise<Subscription> {
-    const doc: any = await SubscriptionModel.findOne({ where: { ...query } });
-    return doc && (doc.get({ plain: true }) as Subscription);
+    const doc = await SubscriptionModel.findOne({ where: { ...query } });
+    if (!doc) {
+      throw new Error(`${JSON.stringify(query)} not found`);
+    }
+    return doc.get({ plain: true });
   }
 
   public async run(ids: number[]) {
