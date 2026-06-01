@@ -1,0 +1,620 @@
+# Instincts generated from https://github.com/gclm/qinglong
+# Generated: 2026-06-01T05:50:35.817Z
+# Version: 2.0
+# NOTE: This file supplements (does not replace) any existing curated instincts.
+# High-confidence manually curated instincts should be preserved alongside these.
+
+---
+id: qinglong-commit-length
+trigger: "when writing a commit message"
+confidence: 0.6
+domain: git
+source: repo-analysis
+source_repo: https://github.com/gclm/qinglong
+---
+
+# Qinglong Commit Length
+
+## Action
+
+Keep commit messages concise (~18 characters)
+
+## Evidence
+
+- Average commit message length: 18 chars
+- Based on 100 commits
+
+---
+id: qinglong-naming-files
+trigger: "when creating a new file"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/gclm/qinglong
+---
+
+# Qinglong Naming Files
+
+## Action
+
+Use camelCase naming convention
+
+## Evidence
+
+- Analyzed file naming patterns in repository
+- Dominant pattern: camelCase
+
+---
+id: qinglong-import-relative
+trigger: "when importing modules"
+confidence: 0.75
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/gclm/qinglong
+---
+
+# Qinglong Import Relative
+
+## Action
+
+Use relative imports for project files
+
+## Evidence
+
+- Import analysis shows relative import pattern
+- Example: import { x } from '../lib/x'
+
+---
+id: qinglong-export-style
+trigger: "when exporting from a module"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/gclm/qinglong
+---
+
+# Qinglong Export Style
+
+## Action
+
+Prefer default exports
+
+## Evidence
+
+- Export pattern analysis
+- Dominant style: default
+
+---
+id: qinglong-arch-type-based
+trigger: "when adding new code"
+confidence: 0.8
+domain: architecture
+source: repo-analysis
+source_repo: https://github.com/gclm/qinglong
+---
+
+# Qinglong Arch Type Based
+
+## Action
+
+Place code in the appropriate type folder (components/, services/, utils/, etc.)
+
+## Evidence
+
+- Type-based module organization detected
+- Folders: assets, components, layouts, locales, pages
+
+---
+id: qinglong-test-separate
+trigger: "when writing tests"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/gclm/qinglong
+---
+
+# Qinglong Test Separate
+
+## Action
+
+Place tests in the tests/ or __tests__/ directory, mirroring src structure
+
+## Evidence
+
+- Separate test directory pattern detected
+- Tests live in dedicated test folders
+
+---
+id: qinglong-workflow-update-version
+trigger: "when doing update version"
+confidence: 0.55
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/gclm/qinglong
+---
+
+# Qinglong Workflow Update Version
+
+## Action
+
+Follow the update-version workflow:
+1. Update version.yaml with the new version number.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~1x per month
+- Files: version.yaml
+
+---
+id: qinglong-workflow-update-readme
+trigger: "when doing update readme"
+confidence: 0.55
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/gclm/qinglong
+---
+
+# Qinglong Workflow Update Readme
+
+## Action
+
+Follow the update-readme workflow:
+1. Edit README.md and/or README-en.md to reflect new features or changes.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~1x per month
+- Files: README.md, README-en.md
+
+---
+id: qinglong-workflow-update-shell-task-environment
+trigger: "when doing update shell task environment"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/gclm/qinglong
+---
+
+# Qinglong Workflow Update Shell Task Environment
+
+## Action
+
+Follow the update-shell-task-environment workflow:
+1. Edit shell scripts such as shell/otask.sh, shell/share.sh, shell/preload/sitecustomize.js, shell/preload/sitecustomize.py.
+2. Update back/services/env.ts or back/config/index.ts if environment logic changes.
+3. Optionally update Dockerfile or related files if environment changes affect containers.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: shell/otask.sh, shell/share.sh, shell/preload/sitecustomize.js
+
+---
+id: qinglong-workflow-fix-or-enhance-cron-or-schedule
+trigger: "when doing fix or enhance cron or schedule"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/gclm/qinglong
+---
+
+# Qinglong Workflow Fix Or Enhance Cron Or Schedule
+
+## Action
+
+Follow the fix-or-enhance-cron-or-schedule workflow:
+1. Edit back/services/cron.ts, back/services/schedule.ts, and/or back/services/subscription.ts.
+2. Optionally update related files such as back/services/cronView.ts, back/services/system.ts, or back/api/env.ts.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: back/services/cron.ts, back/services/schedule.ts, back/services/subscription.ts
+
+---
+id: qinglong-workflow-update-docker-and-package-deps
+trigger: "when doing update docker and package deps"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/gclm/qinglong
+---
+
+# Qinglong Workflow Update Docker And Package Deps
+
+## Action
+
+Follow the update-docker-and-package-deps workflow:
+1. Edit docker/Dockerfile, docker/310.Dockerfile, and/or related shell scripts.
+2. Update package.json and pnpm-lock.yaml for dependency changes.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: docker/Dockerfile, docker/310.Dockerfile, package.json
+
+---
+id: qinglong-workflow-update-sample-config-or-notify
+trigger: "when doing update sample config or notify"
+confidence: 0.55
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/gclm/qinglong
+---
+
+# Qinglong Workflow Update Sample Config Or Notify
+
+## Action
+
+Follow the update-sample-config-or-notify workflow:
+1. Edit sample/config.sample.sh, sample/notify.js, or sample/notify.py.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~1x per month
+- Files: sample/config.sample.sh, sample/notify.js, sample/notify.py
+
+---
+id: qinglong-workflow-fix-frontend-pages-or-styles
+trigger: "when doing fix frontend pages or styles"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/gclm/qinglong
+---
+
+# Qinglong Workflow Fix Frontend Pages Or Styles
+
+## Action
+
+Follow the fix-frontend-pages-or-styles workflow:
+1. Edit files under src/pages/setting/, src/pages/dependence/, src/pages/crontab/, or src/pages/setting/systemLog.tsx.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: src/pages/setting/index.tsx, src/pages/setting/loginLog.tsx, src/pages/setting/systemLog.tsx
+
+---
+id: qinglong-instinct-file-naming-camelCase
+trigger: "When creating or renaming source code files."
+confidence: 0.9
+domain: code-style
+source: repo-analysis
+source_repo: gclm/qinglong
+---
+
+# Qinglong Instinct File Naming CamelCase
+
+## Action
+
+Use camelCase for file names.
+
+## Evidence
+
+- Pattern in codeStyle.namingConventions.files
+- Consistent camelCase in src/
+
+---
+id: qinglong-instinct-function-naming-camelCase
+trigger: "When defining functions."
+confidence: 0.9
+domain: code-style
+source: repo-analysis
+source_repo: gclm/qinglong
+---
+
+# Qinglong Instinct Function Naming CamelCase
+
+## Action
+
+Use camelCase for function names.
+
+## Evidence
+
+- Pattern in codeStyle.namingConventions.functions
+- TypeScript conventions in src/
+
+---
+id: qinglong-instinct-class-naming-pascalCase
+trigger: "When defining classes."
+confidence: 0.9
+domain: code-style
+source: repo-analysis
+source_repo: gclm/qinglong
+---
+
+# Qinglong Instinct Class Naming PascalCase
+
+## Action
+
+Use PascalCase for class names.
+
+## Evidence
+
+- Pattern in codeStyle.namingConventions.classes
+
+---
+id: qinglong-instinct-constant-naming-screaming-snake-case
+trigger: "When declaring constants."
+confidence: 0.9
+domain: code-style
+source: repo-analysis
+source_repo: gclm/qinglong
+---
+
+# Qinglong Instinct Constant Naming Screaming Snake Case
+
+## Action
+
+Use SCREAMING_SNAKE_CASE for constant names.
+
+## Evidence
+
+- Pattern in codeStyle.namingConventions.constants
+
+---
+id: qinglong-instinct-import-style-relative
+trigger: "When importing modules within the project."
+confidence: 0.9
+domain: code-style
+source: repo-analysis
+source_repo: gclm/qinglong
+---
+
+# Qinglong Instinct Import Style Relative
+
+## Action
+
+Use relative import paths.
+
+## Evidence
+
+- Pattern in codeStyle.importStyle
+
+---
+id: qinglong-instinct-export-style-default
+trigger: "When exporting modules."
+confidence: 0.9
+domain: code-style
+source: repo-analysis
+source_repo: gclm/qinglong
+---
+
+# Qinglong Instinct Export Style Default
+
+## Action
+
+Use default exports.
+
+## Evidence
+
+- Pattern in codeStyle.exportStyle
+
+---
+id: qinglong-instinct-testing-location-separate
+trigger: "When adding or organizing test files."
+confidence: 0.85
+domain: testing
+source: repo-analysis
+source_repo: gclm/qinglong
+---
+
+# Qinglong Instinct Testing Location Separate
+
+## Action
+
+Place test files in a separate directory from source files.
+
+## Evidence
+
+- Pattern in architecture.folderStructure.testLocation
+
+---
+id: qinglong-instinct-testing-type-based-organization
+trigger: "When organizing modules or tests."
+confidence: 0.8
+domain: architecture
+source: repo-analysis
+source_repo: gclm/qinglong
+---
+
+# Qinglong Instinct Testing Type Based Organization
+
+## Action
+
+Organize by type (e.g., services, components) rather than by feature.
+
+## Evidence
+
+- Pattern in architecture.moduleOrganization
+
+---
+id: qinglong-instinct-commit-format-freeform
+trigger: "When writing commit messages."
+confidence: 0.8
+domain: git
+source: repo-analysis
+source_repo: gclm/qinglong
+---
+
+# Qinglong Instinct Commit Format Freeform
+
+## Action
+
+Use freeform commit messages, optionally with a short prefix (e.g., 'fix:', 'chore:').
+
+## Evidence
+
+- Pattern in commits.type
+- Examples: 'chore: Update docker-compose.yml (#2553)', '修复定时任务 real_time 参数，升级 protobufjs'
+
+---
+id: qinglong-instinct-commit-length-short
+trigger: "When composing a commit message."
+confidence: 0.8
+domain: git
+source: repo-analysis
+source_repo: gclm/qinglong
+---
+
+# Qinglong Instinct Commit Length Short
+
+## Action
+
+Keep commit messages concise (average ~18 characters).
+
+## Evidence
+
+- Pattern in commits.averageLength
+
+---
+id: qinglong-instinct-update-version
+trigger: "When releasing a new version."
+confidence: 0.99
+domain: workflow
+source: repo-analysis
+source_repo: gclm/qinglong
+---
+
+# Qinglong Instinct Update Version
+
+## Action
+
+Update version.yaml with the new version number.
+
+## Evidence
+
+- Workflow: update-version
+- Commits: '更新版本 v2.17.5'
+- Files: version.yaml
+
+---
+id: qinglong-instinct-update-readme
+trigger: "When documentation needs to be updated or improved."
+confidence: 0.98
+domain: workflow
+source: repo-analysis
+source_repo: gclm/qinglong
+---
+
+# Qinglong Instinct Update Readme
+
+## Action
+
+Edit README.md and/or README-en.md to reflect new features or changes.
+
+## Evidence
+
+- Workflow: update-readme
+- Files: README.md, README-en.md
+
+---
+id: qinglong-instinct-update-shell-task-environment
+trigger: "When changing how tasks are executed or how environment variables are loaded for scripts."
+confidence: 0.93
+domain: workflow
+source: repo-analysis
+source_repo: gclm/qinglong
+---
+
+# Qinglong Instinct Update Shell Task Environment
+
+## Action
+
+Edit shell scripts (shell/otask.sh, shell/share.sh, shell/preload/sitecustomize.js, shell/preload/sitecustomize.py) and update back/services/env.ts or back/config/index.ts if environment logic changes.
+
+## Evidence
+
+- Workflow: update-shell-task-environment
+- Files: shell/otask.sh, back/services/env.ts
+
+---
+id: qinglong-instinct-fix-or-enhance-cron-or-schedule
+trigger: "When there are issues or improvements needed for cron/schedule/subscription logic."
+confidence: 0.92
+domain: workflow
+source: repo-analysis
+source_repo: gclm/qinglong
+---
+
+# Qinglong Instinct Fix Or Enhance Cron Or Schedule
+
+## Action
+
+Edit back/services/cron.ts, back/services/schedule.ts, and/or back/services/subscription.ts (optionally related files).
+
+## Evidence
+
+- Workflow: fix-or-enhance-cron-or-schedule
+- Commits: '修复定时任务 real_time 参数，升级 protobufjs'
+- Files: back/services/cron.ts
+
+---
+id: qinglong-instinct-update-docker-and-package-deps
+trigger: "When dependencies need to be upgraded or Docker images/scripts are changed."
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: gclm/qinglong
+---
+
+# Qinglong Instinct Update Docker And Package Deps
+
+## Action
+
+Edit Dockerfiles and/or update package.json and pnpm-lock.yaml for dependency changes.
+
+## Evidence
+
+- Workflow: update-docker-and-package-deps
+- Commits: 'chore: Update docker-compose.yml (#2553)'
+- Files: docker/Dockerfile, package.json
+
+---
+id: qinglong-instinct-update-sample-config-or-notify
+trigger: "When sample scripts or config templates need to be changed."
+confidence: 0.88
+domain: workflow
+source: repo-analysis
+source_repo: gclm/qinglong
+---
+
+# Qinglong Instinct Update Sample Config Or Notify
+
+## Action
+
+Edit sample/config.sample.sh, sample/notify.js, or sample/notify.py.
+
+## Evidence
+
+- Workflow: update-sample-config-or-notify
+- Files: sample/config.sample.sh
+
+---
+id: qinglong-instinct-fix-frontend-pages-or-styles
+trigger: "When there are UI/UX bugs or improvements in frontend pages."
+confidence: 0.87
+domain: workflow
+source: repo-analysis
+source_repo: gclm/qinglong
+---
+
+# Qinglong Instinct Fix Frontend Pages Or Styles
+
+## Action
+
+Edit files under src/pages/setting/, src/pages/dependence/, src/pages/crontab/, or src/pages/setting/systemLog.tsx.
+
+## Evidence
+
+- Workflow: fix-frontend-pages-or-styles
+- Files: src/pages/setting/index.tsx
+
