@@ -75,7 +75,7 @@ export const commonCronSchema = {
       }
 
       if (
-        !/^(?!.*(?:^|\/)\.{1,2}(?:\/|$))(?:\/)?(?:[\w.-]+\/)*[\w.-]+\/?$/.test(
+        !/^(?!.*(?:^|\/)\.{1,2}(?:\/|$))(?:\/)?(?:[\w\p{Script=Han}.-]+\/)*[\w\p{Script=Han}.-]+\/?$/u.test(
           value,
         )
       ) {
@@ -87,7 +87,7 @@ export const commonCronSchema = {
       return value;
     })
     .messages({
-      'string.pattern.base': '日志名称只能包含字母、数字、下划线和连字符',
+      'string.pattern.base': '日志名称只能包含中文、字母、数字、下划线、连字符、点和路径分隔符',
       'string.max': '日志名称不能超过100个字符',
       'string.unsafePath': '绝对路径必须在日志目录内或使用 /dev/null',
     }),

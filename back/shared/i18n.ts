@@ -94,8 +94,8 @@ const messages: Record<string, Record<string, string>> = {
     '日志设置为忽略': 'Log set to ignore',
     '定时规则不能为空': 'Schedule rule cannot be empty',
     '无效的定时规则': 'Invalid schedule rule',
-    '日志名称只能包含字母、数字、下划线和连字符':
-      'Log name can only contain letters, numbers, underscores, and hyphens',
+    '日志名称只能包含中文、字母、数字、下划线、连字符、点和路径分隔符':
+      'Log name can only contain Chinese characters, letters, numbers, underscores, hyphens, dots, and path separators',
     '日志名称不能超过100个字符': 'Log name cannot exceed 100 characters',
     '错误的用户名密码，请重试': 'Incorrect username or password, please try again',
     '该 IP 已被列入黑名单': 'This IP address has been blocked',
