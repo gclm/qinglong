@@ -51,6 +51,7 @@ export const NotificationModeStringMap = {
   19: 'ntfy',
   20: 'wxPusherBot',
   21: 'wxPusherSpt',
+  22: 'wpush',
 } as const;
 
 export const LINUX_DEPENDENCE_COMMAND: Record<

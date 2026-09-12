@@ -152,6 +152,7 @@ enum NotificationMode {
   ntfy = 19;
   wxPusherBot = 20;
   wxPusherSpt = 21;
+  wpush = 22;
 }
 
 message NotificationInfo {
@@ -247,6 +248,10 @@ message NotificationInfo {
   optional string wxPusherBotUids = 68;
 
   optional string wxPusherSptList = 70;
+
+  optional string wpushApiKey = 71;
+  optional string wpushChannel = 72;
+  optional string wpushTopicCode = 73;
 }
 
 message SystemNotifyRequest {
